@@ -1,23 +1,44 @@
 import type { FC } from 'react';
+
+import { useEditorStore } from '../../editor/useEditorStore';
+
 import Grid from './Grid';
 
-type SceneProps = {
-  selectedObject: string | null;
-  onSelectedObject: (id:string) => void;
-}
-const Scene: FC<SceneProps> = ({ selectedObject, onSelectedObject }) => {
-  const isSelected = selectedObject === "cube-1";
+const Scene: FC = () => {
+
+  const selectedObjectId = useEditorStore(
+    (state) => state.selectedObjectId
+  );
+
+  const selectObject = useEditorStore(
+    (state) => state.selectObject
+  );
+
+  const isSelected = selectedObjectId === 'cube-1';
+
   return (
-    <> // react fragment: puts Grid & Mesh under same Fragment object
-    <Grid />
-      <mesh position={[0, 0.5, 0]} //y offset added for cube to remain above grid
-            onClick={(event) => {
-              event.stopPropagation();
-              onSelectedObject('cube-1');
-            }}>
-        <boxGeometry args={[1,1,1]}/>
-        <meshStandardMaterial color={isSelected ? 'orange' : 'pink'} />
+    <>
+      <Grid />
+
+      <mesh
+        position={[0, 0.5, 0]}
+        onClick={(event) => {
+
+          event.stopPropagation();
+
+          selectObject('cube-1');
+
+        }}
+      >
+
+        <boxGeometry args={[1, 1, 1]} />
+
+        <meshStandardMaterial
+          color={isSelected ? 'orange' : 'pink'}
+        />
+
       </mesh>
+
     </>
   );
 };

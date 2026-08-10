@@ -1,15 +1,17 @@
 import type { FC } from 'react';
-import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import '../designforlayout/Viewport.css';
 
+import { useEditorStore } from '../../editor/useEditorStore';
+
+import '../designforlayout/Viewport.css';
 import Scene from './Scene';
 
 const Viewport: FC = () => {
 
-  const [selectedObject, setSelectedObject] =
-    useState<string | null>(null);
+  const clearSelection = useEditorStore(
+    (state) => state.clearSelection
+  );
 
   return (
     <main className="viewport">
@@ -17,10 +19,13 @@ const Viewport: FC = () => {
       <Canvas
         camera={{ position: [3, 2, 4], fov: 50 }}
         dpr={[1, 2]}
-        // resets selection when clicking empty space
-        onPointerMissed={() => setSelectedObject(null)}
+        onPointerMissed={clearSelection}
       >
-        <color attach="background" args={['rgba(234, 223, 196, 1)']} />
+
+        <color
+          attach="background"
+          args={['rgba(234, 223, 196, 1)']}
+        />
 
         <ambientLight intensity={0.6} />
 
@@ -29,10 +34,7 @@ const Viewport: FC = () => {
           intensity={1.8}
         />
 
-        <Scene
-          selectedObject={selectedObject}
-          onSelectedObject={setSelectedObject}
-        />
+        <Scene />
 
         <OrbitControls makeDefault />
 
