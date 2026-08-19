@@ -28,3 +28,12 @@
 .sidebar-content li:hover {
   background-color: #555;
 }
+
+.sidebar li {
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+.sidebar li.selected {
+  background: #3d4654;
+}

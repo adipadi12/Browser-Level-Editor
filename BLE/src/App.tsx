@@ -3,6 +3,7 @@ import Sidebar from './components/layout/Sidebar';
 import Viewport from './components/layout/Viewport';
 import StatusBar from './components/layout/StatusBar';
 import './App.css';
+import Inspector from './components/Inspector';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="main-content">
         <Sidebar />
         <Viewport />
+        <Inspector/>
       </div>
 
       <StatusBar />

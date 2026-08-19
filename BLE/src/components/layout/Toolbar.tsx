@@ -14,7 +14,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
   onViewClick,
   onHelpClick
 }) => {
-  return ( // Add your toolbar logic here, for now keeping void buttons
+  return ( // Add toolbar logic here, for now keeping void buttons
     <header className="toolbar">
       <button onClick={onFileClick}>File</button>
       <button onClick={onEditClick}>Edit</button>

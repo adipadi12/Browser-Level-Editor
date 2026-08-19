@@ -3,8 +3,13 @@ import type { FC } from 'react';
 import { useEditorStore } from '../../editor/useEditorStore';
 
 import Grid from './Grid';
+import Inspector from '../Inspector';
 
 const Scene: FC = () => {
+
+  const objects = useEditorStore(
+    (state) => state.objects
+  );
 
   const selectedObjectId = useEditorStore(
     (state) => state.selectedObjectId
@@ -20,24 +25,37 @@ const Scene: FC = () => {
     <>
       <Grid />
 
-      <mesh
-        position={[0, 0.5, 0]}
-        onClick={(event) => {
+      {objects.map((object) => {
+        const isSelected = 
+          selectedObjectId === object.id;
 
-          event.stopPropagation();
+        if(object.type === 'cube'){
+          return (
+            <mesh
+              key={object.id}
+              position={object.position}
+              rotation={object.rotation}
+              scale={object.scale}
 
-          selectObject('cube-1');
+              onClick={(event) => {
+                event.stopPropagation();
+                selectObject(object.id);
+              }}
+            >
+        
+      
 
-        }}
-      >
+              <boxGeometry args={[1, 1, 1]} />
 
-        <boxGeometry args={[1, 1, 1]} />
+              <meshStandardMaterial
+                color={isSelected ? 'orange' : 'pink'}
+              />
 
-        <meshStandardMaterial
-          color={isSelected ? 'orange' : 'pink'}
-        />
-
-      </mesh>
+            </mesh>
+          );
+        }
+        return null;
+      })}
 
     </>
   );
