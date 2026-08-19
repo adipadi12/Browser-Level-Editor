@@ -3,7 +3,7 @@ import Sidebar from './components/layout/Sidebar';
 import Viewport from './components/layout/Viewport';
 import StatusBar from './components/layout/StatusBar';
 import './App.css';
-import Inspector from './components/Inspector';
+import Inspector from './components/layout/Inspector';
 
 function App() {
   return (

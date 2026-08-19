@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { useEditorStore } from '../../editor/useEditorStore';
 
 import Grid from './Grid';
-import Inspector from '../Inspector';
+import Inspector from './Inspector';
 
 const Scene: FC = () => {
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { useEditorStore } from "../editor/useEditorStore";
+import { useEditorStore } from "../../editor/useEditorStore";
+import "../designforlayout/Inspector.css"
 
 const Inspector: React.FC = () => {
 
@@ -22,22 +23,22 @@ const selectedObject = objects.find(
 if (!selectedObject) {
   return (
     <aside>
-      <h3>Inspector</h3>
-      <p>No object selected</p>
+      <h3 className="container">Inspector</h3>
+      <p className="container">No object selected</p>
     </aside>
   );
 }
 
     return (
     <aside>
-        <h3>Inspector</h3>
+        <h3 className="container-left">Inspector</h3>
 
-        <h4>{selectedObject.name}</h4>
+        <h4 className="container-left">{selectedObject.name}</h4>
 
-        <p>Position</p>
+        <p className="container-left">Position</p>
 
         <div>
-            <label>X</label>
+            <label className="container">X</label>
             <input // input type of HTML triggering onChange to use new position
                 type="number"
                 value={selectedObject.position[0]}
@@ -56,7 +57,7 @@ if (!selectedObject) {
         </div>
 
         <div>
-            <label>Y</label>
+            <label className="container">Y</label>
             <input
                 type="number"
                 value={selectedObject.position[1]}
@@ -75,7 +76,7 @@ if (!selectedObject) {
         </div>
 
         <div>
-            <label>Z</label>
+            <label className="container">Z</label>
             <input
                 type="number"
                 value={selectedObject.position[2]}
@@ -93,10 +94,10 @@ if (!selectedObject) {
             />
         </div>
 
-        <p>Rotation</p>
+        <p className="container-left">Rotation</p>
 
         <div>
-            <label>X</label>
+            <label className="container">X</label>
             <input // input type of HTML triggering onChange to use new position
                 type="number"
                 value={selectedObject.rotation[0]  * 180 / Math.PI}
@@ -115,7 +116,7 @@ if (!selectedObject) {
         </div>
 
         <div>
-            <label>Y</label>
+            <label className="container">Y</label>
             <input
                 type="number"
                 value={selectedObject.rotation[1] * 180 / Math.PI}
@@ -134,7 +135,7 @@ if (!selectedObject) {
         </div>
 
         <div>
-            <label>Z</label>
+            <label className="container">Z</label>
             <input
                 type="number"
                 value={selectedObject.rotation[2] * 180 / Math.PI}
@@ -152,10 +153,10 @@ if (!selectedObject) {
             />
         </div>
 
-        <p>Scale</p>
+        <p className="container-left">Scale</p>
 
         <div>
-            <label>X</label>
+            <label className="container">X</label>
             <input // input type of HTML triggering onChange to use new position
                 type="number"
                 value={selectedObject.scale[0]}
@@ -174,7 +175,7 @@ if (!selectedObject) {
         </div>
 
         <div>
-            <label>Y</label>
+            <label className="container">Y</label>
             <input
                 type="number"
                 value={selectedObject.scale[1]}
@@ -193,7 +194,7 @@ if (!selectedObject) {
         </div>
 
         <div>
-            <label>Z</label>
+            <label className="container">Z</label>
             <input
                 type="number"
                 value={selectedObject.scale[2]}
