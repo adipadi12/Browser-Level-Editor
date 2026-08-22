@@ -1,19 +1,17 @@
+// The sidebar acts like a Unity hierarchy panel: it lists every object in the scene.
 import React from 'react';
-import { useEditorStore } from '../../editor/useEditorStore'
+import { useEditorStore } from '../../editor/useEditorStore';
 import '../designforlayout/Sidebar.css';
 
 const Sidebar: React.FC = () => {
-  const objects = useEditorStore(
-    (state) => state.objects
-  );
+  // Read the objects currently stored in the editor.
+  const objects = useEditorStore((state) => state.objects);
 
-  const selectedObjectId = useEditorStore(
-    (state) => state.selectedObjectId // give currently selected object from editor store
-  );
+  // Read the id of the selected object so we can highlight it.
+  const selectedObjectId = useEditorStore((state) => state.selectedObjectId);
 
-  const selectObject = useEditorStore(
-    (state) => state.selectObject
-  );
+  // Function to change the selected object when the user clicks a name.
+  const selectObject = useEditorStore((state) => state.selectObject);
 
   return (
     <aside className="sidebar">
@@ -23,21 +21,18 @@ const Sidebar: React.FC = () => {
           {objects.map((object) => (
             <li
               key={object.id}
-
-              className={
-                selectedObjectId === object.id
-                ? 'selected'
-                : ''
-              }
+              // If this object is currently selected, add the CSS class 'selected'.
+              className={selectedObjectId === object.id ? 'selected' : ''}
+              // Clicking an item should set it as the current selection.
               onClick={() => selectObject(object.id)}
-              >
-                {object.name}
+            >
+              {object.name}
             </li>
           ))}
         </ul>
       </div>
     </aside>
-  )
+  );
 };
 
 export default Sidebar;

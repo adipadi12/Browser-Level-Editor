@@ -1,84 +1,72 @@
+// This component draws all items that belong in the 3D editor scene.
 import { useRef, type FC } from 'react';
 
 import { useEditorStore } from '../../editor/useEditorStore';
 
 import Grid from './Grid';
-import Inspector from './Inspector';
-
 import TransformGizmo from './TransformGizmo';
 import type { Mesh } from 'three';
 
 const Scene: FC = () => {
+  // Read the current scene objects from the central store.
+  const objects = useEditorStore((state) => state.objects);
 
-  const objects = useEditorStore(
-    (state) => state.objects
-  );
+  // Read the id of the active selection.
+  const selectedObjectId = useEditorStore((state) => state.selectedObjectId);
 
-  const selectedObjectId = useEditorStore(
-    (state) => state.selectedObjectId
-  );
+  // Function used to select an object when clicked.
+  const selectObject = useEditorStore((state) => state.selectObject);
 
-  const selectObject = useEditorStore(
-    (state) => state.selectObject
-  );
-
-  const isSelected = selectedObjectId === 'cube-1';
-
+  // A Map stores direct references to each mesh so we can attach transform handles to it.
   const meshRefs = useRef<Map<string, Mesh>>(new Map());
 
-  const selectedMesh = selectedObjectId
-    ? meshRefs.current.get(selectedObjectId)
-    : undefined;
-
+  // Find the actual Mesh instance for the selected object.
+  const selectedMesh = selectedObjectId ? meshRefs.current.get(selectedObjectId) : undefined;
 
   return (
     <>
+      {/* Draw the floor/grid under the objects. */}
       <Grid />
 
       {objects.map((object) => {
-        const isSelected = 
-          selectedObjectId === object.id;
+        // Determine whether this object is the active/selected one.
+        const isSelected = selectedObjectId === object.id;
 
-        if(object.type === 'cube'){
+        // Only render cubes in this scene version.
+        if (object.type === 'cube') {
           return (
-          <group key={object.id}>
-            <mesh              
-              ref={(mesh) => {
-                if(mesh){
-                  meshRefs.current.set(object.id, mesh);
-                } else{
-                  meshRefs.current.delete(object.id);
-                }
-              }}
-              position={object.position}
-              rotation={object.rotation}
-              scale={object.scale}
+           <group key={object.id}>
+             <mesh
+               // Store a direct Three.js mesh reference for later transform interactions.
+               ref={(mesh) => {
+                 if (mesh) {
+                   meshRefs.current.set(object.id, mesh);
+                 } else {
+                   meshRefs.current.delete(object.id);
+                 }
+               }}
+               position={object.position}
+               rotation={object.rotation}
+               scale={object.scale}
+               // Clicking an object should make it selected.
+               onClick={(event) => {
+                 event.stopPropagation();
+                 selectObject(object.id);
+               }}
+             >
+               <boxGeometry args={[1, 1, 1]} />
 
-              onClick={(event) => {
-                event.stopPropagation();
-                selectObject(object.id);
-              }}
-            >
-        
-      
+               <meshStandardMaterial color={isSelected ? 'orange' : 'pink'} />
+             </mesh>
 
-              <boxGeometry args={[1, 1, 1]} />
-
-              <meshStandardMaterial
-                color={isSelected ? 'orange' : 'pink'}
-              />
-            
-            </mesh>
-
-            {selectedMesh && (
-               <TransformGizmo object={selectedMesh} />
-           )}
-          </group>
+             {/* Show transform handles for the selected mesh, if it exists. */}
+             {selectedMesh && <TransformGizmo object={selectedMesh} />}
+           </group>
           );
         }
+
         return null;
       })}
-      
     </>
   );
 };
