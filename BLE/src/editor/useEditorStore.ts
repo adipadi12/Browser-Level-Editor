@@ -3,6 +3,8 @@
 import { create } from 'zustand';
 import type { SceneObject } from '../types/scene';
 
+type GizmoMode = 'translate' | 'rotate' | 'scale'; 
+
 // The data that lives in the editor state.
 interface EditorState {
   // The scene currently contains these objects.
@@ -19,6 +21,9 @@ interface EditorState {
 
   // Update a single object, merging the new values into the existing object.
   updateObject: (id: string, updates: Partial<SceneObject>) => void;
+
+  gizmoMode: GizmoMode;
+  setGizmoMode: (mode: GizmoMode) => void;
 }
 
 // create(...) creates a hook + store. Components can call useEditorStore(...) to read or update state.
@@ -44,6 +49,9 @@ export const useEditorStore = create<EditorState>((set) => ({
     },
   ],
 
+  gizmoMode: 'translate',
+
+  setGizmoMode: (mode) => set({ gizmoMode: mode}),
   // No object is selected when the editor starts.
   selectedObjectId: null,
 

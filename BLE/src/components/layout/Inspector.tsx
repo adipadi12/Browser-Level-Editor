@@ -9,6 +9,7 @@ const Inspector: React.FC = () => {
  const objects = useEditorStore((state) => state.objects);
  const selectedObjectId = useEditorStore((state) => state.selectedObjectId);
  const updateObject = useEditorStore((state) => state.updateObject);
+ const round3 = (n: number) => Math.round(n * 1000) / 1000;
 
  // Find the selected object from the list using its id.
  const selectedObject = objects.find((object) => object.id === selectedObjectId);
@@ -35,7 +36,7 @@ const Inspector: React.FC = () => {
        <label className="container">X</label>
        <input
          type="number"
-         value={selectedObject.position[0]}
+         value={round3(selectedObject.position[0])}
          onChange={(event) => {
            const newX = Number(event.target.value);
 
@@ -51,7 +52,7 @@ const Inspector: React.FC = () => {
        <label className="container">Y</label>
        <input
          type="number"
-         value={selectedObject.position[1]}
+         value={round3(selectedObject.position[1])}
          onChange={(event) => {
            const newY = Number(event.target.value);
 
@@ -67,7 +68,7 @@ const Inspector: React.FC = () => {
        <label className="container">Z</label>
        <input
          type="number"
-         value={selectedObject.position[2]}
+         value={round3(selectedObject.position[2])}
          onChange={(event) => {
            const newZ = Number(event.target.value);
 
@@ -85,7 +86,7 @@ const Inspector: React.FC = () => {
        <label className="container">X</label>
        <input
          type="number"
-         value={selectedObject.rotation[0] * 180 / Math.PI}
+         value={round3(selectedObject.rotation[0] * 180 / Math.PI)}
          onChange={(event) => {
            const newX = Number(event.target.value) * Math.PI / 180;
 
@@ -100,7 +101,7 @@ const Inspector: React.FC = () => {
        <label className="container">Y</label>
        <input
          type="number"
-         value={selectedObject.rotation[1] * 180 / Math.PI}
+         value={round3(selectedObject.rotation[1] * 180 / Math.PI)}
          onChange={(event) => {
            const newY = Number(event.target.value) * Math.PI / 180;
 
@@ -115,7 +116,7 @@ const Inspector: React.FC = () => {
        <label className="container">Z</label>
        <input
          type="number"
-         value={selectedObject.rotation[2] * 180 / Math.PI}
+         value={round3(selectedObject.rotation[2] * 180 / Math.PI)}
          onChange={(event) => {
            const newZ = Number(event.target.value) * Math.PI / 180;
 
@@ -132,7 +133,7 @@ const Inspector: React.FC = () => {
        <label className="container">X</label>
        <input
          type="number"
-         value={selectedObject.scale[0]}
+         value={round3(selectedObject.scale[0])}
          onChange={(event) => {
            const newX = Number(event.target.value);
 
@@ -147,7 +148,7 @@ const Inspector: React.FC = () => {
        <label className="container">Y</label>
        <input
          type="number"
-         value={selectedObject.scale[1]}
+         value={round3(selectedObject.scale[1])}
          onChange={(event) => {
            const newY = Number(event.target.value);
 
@@ -162,7 +163,7 @@ const Inspector: React.FC = () => {
        <label className="container">Z</label>
        <input
          type="number"
-         value={selectedObject.scale[2]}
+         value={round3(selectedObject.scale[2])}
          onChange={(event) => {
            const newZ = Number(event.target.value);
 

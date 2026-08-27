@@ -6,6 +6,7 @@ import { useEditorStore } from '../../editor/useEditorStore';
 import Grid from './Grid';
 import TransformGizmo from './TransformGizmo';
 import type { Mesh } from 'three';
+import { useGizmoKeys } from '../../editor/useGizmoKeys';
 
 const Scene: FC = () => {
   // Read the current scene objects from the central store.
@@ -13,6 +14,8 @@ const Scene: FC = () => {
 
   // Read the id of the active selection.
   const selectedObjectId = useEditorStore((state) => state.selectedObjectId);
+
+  const gizmoMode = useEditorStore((s) => s.gizmoMode);
 
   // Function used to select an object when clicked.
   const selectObject = useEditorStore((state) => state.selectObject);
@@ -22,6 +25,8 @@ const Scene: FC = () => {
 
   // Find the actual Mesh instance for the selected object.
   const selectedMesh = selectedObjectId ? meshRefs.current.get(selectedObjectId) : undefined;
+
+  useGizmoKeys();
 
   return (
     <>
@@ -60,7 +65,7 @@ const Scene: FC = () => {
              </mesh>
 
              {/* Show transform handles for the selected mesh, if it exists. */}
-             {selectedMesh && <TransformGizmo object={selectedMesh} />}
+             {isSelected && selectedMesh && <TransformGizmo object={selectedMesh} objectId={object.id} mode={gizmoMode}/>}
            </group>
           );
         }
