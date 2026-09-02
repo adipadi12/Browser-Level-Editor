@@ -1,7 +1,169 @@
-.container {
-  padding: 20px;
-}   
+/* Inspector Styles */
+.inspector {
+  width: 280px;
+  background-color: #1e2127;
+  border-left: 1px solid #333842;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+  color: #abb2bf;
+}
 
-.container-left {
-  padding: 0px 0px 0px 20px;
-}   
+.inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #333842;
+}
+
+.inspector-header h3 {
+  margin: 0;
+  color: #e5e9f0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.delete-btn:hover {
+  background-color: #e06c75;
+}
+
+.empty-msg {
+  padding: 20px 14px;
+  color: #5c6370;
+  font-size: 13px;
+  text-align: center;
+}
+
+.inspector-section {
+  padding: 12px 14px;
+  border-bottom: 1px solid #282c34;
+}
+
+.inspector-section h4 {
+  margin: 0 0 10px 0;
+  color: #e5e9f0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.inspector-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.inspector-row label {
+  flex: 0 0 70px;
+  font-size: 12px;
+  color: #8c9ba5;
+}
+
+.inspector-row input[type="text"],
+.inspector-row select {
+  flex: 1;
+  background-color: #282c34;
+  border: 1px solid #3e4451;
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: #e5e9f0;
+  font-size: 13px;
+}
+
+.inspector-row input[type="text"]:focus,
+.inspector-row select:focus {
+  outline: none;
+  border-color: #61afef;
+}
+
+.inspector-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.transform-group {
+  margin-bottom: 10px;
+}
+
+.transform-title {
+  font-size: 11px;
+  color: #8c9ba5;
+  margin-bottom: 4px;
+}
+
+.transform-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.transform-inputs div {
+  display: flex;
+  align-items: center;
+  background-color: #282c34;
+  border: 1px solid #3e4451;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.transform-inputs span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5c6370;
+  margin-right: 4px;
+}
+
+.transform-inputs input {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #e5e9f0;
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.transform-inputs input:focus {
+  outline: none;
+}
+
+.inspector-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.inspector-toggle {
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 28px;
+  height: 48px;
+
+  border: 1px solid #2a3038;
+  border-radius: 6px 0 0 6px;
+  background: #1a1f26;
+  color: #aaa;
+
+  cursor: pointer;
+  z-index: 10;
+}
+
+.inspector-toggle:hover {
+  color: white;
+  background: #242a33;
+}

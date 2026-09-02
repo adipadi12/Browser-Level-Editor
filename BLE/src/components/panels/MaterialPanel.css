@@ -1,0 +1,68 @@
+.material-panel {
+  padding: 10px 0;
+  border-top: 1px solid #666;
+}
+
+.material-panel h4 {
+  margin: 0 0 10px 0;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.material-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.material-row label {
+  flex: 0 0 100px;
+  color: #ccc;
+  font-size: 13px;
+}
+
+.material-row input[type="color"] {
+  width: 40px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.material-row input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+}
+
+.material-row span {
+  flex: 0 0 40px;
+  color: #ccc;
+  font-size: 12px;
+  text-align: right;
+}
+
+.material-row button {
+  padding: 5px 10px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.material-row button:hover {
+  background-color: #357abd;
+}
+
+.material-row .texture-remove-btn {
+  background-color: #e74c3c;
+  padding: 5px 8px;
+}
+
+.material-row .texture-remove-btn:hover {
+  background-color: #c0392b;
+}

@@ -1,0 +1,330 @@
+/* Modals.css - shared styles for all modal dialogs */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: #2c3038;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideUp 0.2s ease-out;
+}
+
+.modal-content.export-modal,
+.modal-content.shortcuts-modal {
+  max-width: 700px;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #444b58;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #e1e8ed;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #8c9ba5;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.close-btn:hover {
+  background-color: #3b4252;
+  color: #e1e8ed;
+}
+
+.modal-body {
+  padding: 20px;
+  color: #ccc;
+}
+
+.modal-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.modal-row label {
+  flex: 0 0 150px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.modal-row input[type="text"],
+.modal-row input[type="number"] {
+  flex: 1;
+  background-color: #1e2127;
+  border: 1px solid #444b58;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #e1e8ed;
+  font-size: 14px;
+}
+
+.modal-row input[type="text"]:focus,
+.modal-row input[type="number"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.modal-row input[type="color"] {
+  width: 50px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-row input[type="range"] {
+  flex: 1;
+}
+
+.modal-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.modal-row span {
+  flex: 0 0 40px;
+  color: #8c9ba5;
+  font-size: 13px;
+}
+
+.modal-hint {
+  font-size: 13px;
+  color: #8c9ba5;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #444b58;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.primary-btn {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #357abd;
+}
+
+.secondary-btn {
+  background-color: #3b4252;
+  color: #e1e8ed;
+}
+
+.secondary-btn:hover {
+  background-color: #4c566a;
+}
+
+/* Export Modal Styles */
+.export-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.export-card {
+  background-color: #1e2127;
+  border: 1px solid #444b58;
+  border-radius: 6px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.export-card:hover {
+  border-color: #4a90e2;
+  background-color: #252932;
+}
+
+.export-card-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.export-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e1e8ed;
+  margin-bottom: 6px;
+}
+
+.export-card-desc {
+  font-size: 13px;
+  color: #8c9ba5;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.export-action-btn {
+  width: 100%;
+  padding: 8px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.export-action-btn:hover {
+  background-color: #357abd;
+}
+
+.export-action-btn:disabled {
+  background-color: #3b4252;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Upload Dropzone */
+.upload-dropzone {
+  background-color: #1e2127;
+  border: 2px dashed #444b58;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.upload-dropzone:hover {
+  border-color: #4a90e2;
+  background-color: #252932;
+}
+
+.upload-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.upload-dropzone p {
+  color: #8c9ba5;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Keyboard Shortcuts Modal */
+.shortcut-category {
+  margin-bottom: 20px;
+}
+
+.shortcut-category:last-child {
+  margin-bottom: 0;
+}
+
+.shortcut-category h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #8c9ba5;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.5px;
+}
+
+.shortcut-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background-color: #1e2127;
+  border-radius: 4px;
+}
+
+.shortcut-key {
+  background-color: #2c3038;
+  border: 1px solid #444b58;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #e1e8ed;
+  min-width: 120px;
+  text-align: center;
+}
+
+.shortcut-action {
+  color: #ccc;
+  font-size: 13px;
+}

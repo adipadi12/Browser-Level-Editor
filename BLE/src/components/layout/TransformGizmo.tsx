@@ -1,12 +1,11 @@
-// TransformGizmo adds interactive move handles to a selected mesh.
+// TransformGizmo adds interactive move handles to a selected object.
 import { TransformControls } from '@react-three/drei';
-import type { ThreeElement } from '@react-three/fiber';
-import type { Mesh } from 'three';
+import type { Object3D } from 'three';
 import { useEditorStore } from '../../editor/useEditorStore';
 
 type TransformGizmoProps = {
-    // The mesh that will be manipulated by the gizmo.
-    object: Mesh;
+    // The Object3D (Mesh or Group) that will be manipulated by the gizmo.
+    object: Object3D;
     objectId: string;
     mode: 'translate' | 'rotate' | 'scale';
 };
