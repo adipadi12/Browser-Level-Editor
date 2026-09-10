@@ -1,2 +1,5 @@
 .odysseusrules
 .odysseusignore
+~/
+.vercel
+.netlify
