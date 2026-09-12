@@ -1,12 +1,13 @@
 .material-panel {
   padding: 10px 0;
-  border-top: 1px solid #666;
+  border-top: 1px solid #313131;
 }
 
 .material-panel h4 {
-  margin: 0 0 10px 0;
+  margin: 0 0 10px 10px;
   color: white;
   font-size: 14px;
+  text-transform: uppercase;
   font-weight: 600;
 }
 
@@ -15,11 +16,11 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
-  padding: 0 10px;
+  padding: 0 10px 0;
 }
 
 .material-row label {
-  flex: 0 0 100px;
+  flex: 0 0 80px;
   color: #ccc;
   font-size: 13px;
 }
@@ -41,7 +42,7 @@
   flex: 0 0 40px;
   color: #ccc;
   font-size: 12px;
-  text-align: right;
+  text-align: center;
 }
 
 .material-row button {
