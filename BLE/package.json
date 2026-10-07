@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -18,6 +19,7 @@
     "react-hot-toast": "^2.6.0",
     "three": "^0.185.1",
     "uuid": "^14.0.1",
+    "vercel": "^62.7.0",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
